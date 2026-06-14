@@ -1,32 +1,3 @@
-# Thunder Hackathon 2.0 — JavaScript Interpreter
-
-A **from-scratch JavaScript interpreter written in Python 3**, built for Thunder Hackathon 2.0.
-
-No Node.js. No subprocess calls. No transpilation hacks. Pure tree-walking interpreter.
-
----
-
-## Architecture
-
-```
-Source Code
-    │
-    ▼
-┌─────────┐
-│  Lexer  │  → Token stream
-└─────────┘
-    │
-    ▼
-┌──────────┐
-│  Parser  │  → Abstract Syntax Tree (AST)
-└──────────┘
-    │
-    ▼
-┌───────────┐
-│ Evaluator │  → Output to stdout
-└───────────┘
-```
-
 **Three clean modules, zero dependencies beyond Python stdlib.**
 
 | Module | Role |
@@ -58,6 +29,8 @@ echo "console.log(2 + 2);" | python interpreter.py
 
 > **Note:** On Windows, `python3` may not resolve due to the Microsoft Store app execution alias. Use `python` instead.
 
+---
+
 ## Test Cases
 
 All 5 official test cases pass:
@@ -80,6 +53,7 @@ python interpreter.py tc5.js   # → racecar is a Palindrome
 ```
 
 ---
+
 ## Getting the Code (For Beginners)
 
 If you've never used Git before, here's how to get this project running on your computer:
@@ -108,6 +82,7 @@ python3 interpreter.py tc1.js
 
 You should see the output printed directly in the terminal.
 
+---
 
 ## Supported JavaScript Features
 
@@ -186,16 +161,10 @@ Backtick strings with `${expression}` interpolation (nested expressions supporte
 
 ---
 
-## Why This Approach Wins
+## Design Notes
 
-| Approach | Fragility |
-|---|---|
-| Regex transpile (JS→Python text→exec) | Breaks on chained calls, closures, complex expressions |
-| Call Node.js via subprocess | Violates hackathon rules (own interpreter required) |
-| **AST tree-walking interpreter** ✓ | Handles any valid JS by design |
-
-The Lexer → Parser → Evaluator pipeline is how real language runtimes work. Each layer has a single responsibility, making the code readable, testable, and extensible.
+This interpreter uses a classic **Lexer → Parser → AST → Evaluator** pipeline instead of regex-based transpilation. Each piece of JS source is tokenized, parsed into a structured AST, then walked and evaluated directly — so nested expressions, closures, chained method calls, and destructuring all work correctly because the structure is understood, not pattern-matched.
 
 ---
 
-*Built for Thunder Hackathon 2.0 | Author: Deepak (jinxdeep.dev)*
+*Built for Thunder Hackathon 2.0 | Author: Deepak (jinx)*
