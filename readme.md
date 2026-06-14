@@ -44,17 +44,19 @@ Source Code
 **Requirements:** Python 3.10+
 
 ```bash
-# Run a JS file
-python3 interpreter.py script.js
+# Windows
+python interpreter.py script.js
+python interpreter.py "console.log('Hello, World!');"
 
-# Run inline JS
+# macOS/Linux
+python3 interpreter.py script.js
 python3 interpreter.py "console.log('Hello, World!');"
 
-# Pipe from stdin
-echo "console.log(2 + 2);" | python3 interpreter.py
+# Pipe from stdin (any OS)
+echo "console.log(2 + 2);" | python interpreter.py
 ```
 
----
+> **Note:** On Windows, `python3` may not resolve due to the Microsoft Store app execution alias. Use `python` instead.
 
 ## Test Cases
 
@@ -62,22 +64,50 @@ All 5 official test cases pass:
 
 ```bash
 # TC1 — Odd/Even
-python3 interpreter.py tc1.js   # → 7 is Odd
+python interpreter.py tc1.js   # → 7 is Odd
 
 # TC2 — Triangle Pattern  
-python3 interpreter.py tc2.js   # → * ** *** **** *****
+python interpreter.py tc2.js   # → * ** *** **** *****
 
 # TC3 — Armstrong Number
-python3 interpreter.py tc3.js   # → true / false
+python interpreter.py tc3.js   # → true / false
 
 # TC4 — Array Reverse
-python3 interpreter.py tc4.js   # → Original: 1,2,3,4,5 / Reversed: 5,4,3,2,1
+python interpreter.py tc4.js   # → Original: 1,2,3,4,5 / Reversed: 5,4,3,2,1
 
 # TC5 — String Palindrome
-python3 interpreter.py tc5.js   # → racecar is a Palindrome
+python interpreter.py tc5.js   # → racecar is a Palindrome
 ```
 
 ---
+## Getting the Code (For Beginners)
+
+If you've never used Git before, here's how to get this project running on your computer:
+
+### Step 1: Install Python
+Download and install Python from [python.org/downloads](https://python.org/downloads). During installation, make sure to check **"Add Python to PATH"**.
+
+### Step 2: Download this repository
+You don't need Git for this — just:
+1. Click the green **`<> Code`** button at the top of this page
+2. Click **Download ZIP**
+3. Extract the ZIP file to a folder on your computer
+
+### Step 3: Open a terminal in that folder
+- **Windows**: Open the extracted folder, click the address bar, type `cmd`, and press Enter
+- **macOS**: Right-click the folder → "New Terminal at Folder" (or open Terminal and `cd` into it)
+
+### Step 4: Run the interpreter
+```bash
+# Windows
+python interpreter.py tc1.js
+
+# macOS/Linux
+python3 interpreter.py tc1.js
+```
+
+You should see the output printed directly in the terminal.
+
 
 ## Supported JavaScript Features
 

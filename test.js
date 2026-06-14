@@ -1,11 +1,4 @@
-function fib(n){
-    if(n <= 1){
-        return n;
-    }
-
-    return fib(n-1) + fib(n-2);
-}
-
-let arr = [fib(5), fib(6), fib(7)];
-
-console.log(arr.join(","));
+let arr = [1, 2, 3, 4, 5]; 
+let reversed = [...arr].reverse(); 
+console.log("Original: " + arr.join(", ")); 
+console.log("Reversed: " + reversed.join(", "));
